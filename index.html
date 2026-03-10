@@ -1,12 +1,17 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Md Talib Hussain | Panchayat Election</title><style>
+
+<title>Md Talib Hussain | Panchayat Election</title>
+
+<style>
 
 body{
 margin:0;
-font-family:Arial;
+font-family:Arial, sans-serif;
 background:#f2f2f2;
 }
 
@@ -17,11 +22,6 @@ text-align:center;
 padding:30px;
 }
 
-header h1{
-margin:0;
-font-size:32px;
-}
-
 section{
 background:white;
 margin:15px;
@@ -30,33 +30,12 @@ border-radius:10px;
 box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
-.candidate{
-text-align:center;
-}
-
-.candidate img{
-width:220px;
-border-radius:10px;
-margin-top:10px;
-}
-
-.promise{
-line-height:1.8;
-font-size:18px;
-}
-
-.gallery img{
-width:200px;
-margin:10px;
-border-radius:10px;
-}
-
 .button{
 display:inline-block;
 background:#25D366;
 color:white;
 padding:12px 20px;
-border-radius:5px;
+border-radius:6px;
 text-decoration:none;
 margin-top:10px;
 }
@@ -68,127 +47,413 @@ text-align:center;
 padding:15px;
 }
 
-.symbol{
-font-size:22px;
-font-weight:bold;
-color:#006400;
+.lang-buttons{
+text-align:center;
+margin:10px;
+}
+
+.lang-buttons button{
+padding:10px 15px;
+margin:5px;
+background:#25D366;
+color:white;
+border:none;
+border-radius:5px;
+}
+
+input, textarea{
+width:90%;
+padding:8px;
+margin:5px 0;
 }
 
 </style>
+
 </head>
 
-<body onload="setLanguage('en')">
+<body onload="autoLanguage()">
 
-<div style="text-align:center;margin:10px;">
-<button onclick="setLanguage('en')" class="button">English</button>
-<button onclick="setLanguage('hi')" class="button">Hindi</button>
-<button onclick="setLanguage('ur')" class="button">Urdu</button>
+
+<div class="lang-buttons">
+<button onclick="setLanguage('en')">English</button>
+<button onclick="setLanguage('hi')">Hindi</button>
+<button onclick="setLanguage('ur')">Urdu</button>
 </div>
 
-<header><h1>Vote for Development</h1><h2>Md Talib Hussain</h2><img src="talibjpg.jpg" width="200" style="border-radius:50%; margin-top:10px;"><p>Panchayat Election | Bell Ahiram Panchayat</p><p class="symbol">Election Symbol: 🍆 Brinjal</p></header><section class="candidate"><h2>Candidate Profile</h2><img src="talib.jpg"><p><b>Name:</b> Md Talib Hussain</p><p><b>Father Name:</b> Md Jabir Hussain</p><p><b>Age:</b> 35</p><p><b>District:</b> East Champaran</p><p><b>State:</b> Bihar</p></section><section><h2>Campaign Message</h2><p class="promise">Development for every family.<br><br>
 
 <div class="lang en">
-<p>Better roads, clean drinking water and employment opportunities for youth.</p>
+
+<header>
+
+<h1>Vote for Development</h1>
+
+<h2>Md Talib Hussain</h2>
+
+<p>District: East Champaran | State: Bihar</p>
+
+</header>
+
 </div>
+
+
 <div class="lang hi" style="display:none;">
-<p>बेहतर सड़कें, स्वच्छ पेयजल और युवाओं के लिए रोजगार के अवसर।</p>
+
+<header>
+
+<h1>विकास के लिए वोट दें</h1>
+
+<h2>एमडी तालिब हुसैन</h2>
+
+<p>जिला: पूर्वी चंपारण | राज्य: बिहार</p>
+
+</header>
+
 </div>
+
+
 <div class="lang ur" style="display:none;">
-<p>بہتر سڑکیں، صاف پینے کا پانی اور نوجوانوں کے لیے روزگار کے مواقع۔</p>
+
+<header>
+
+<h1>ترقی کے لیے ووٹ دیں</h1>
+
+<h2>ایم ڈی طالب حسین</h2>
+
+<p>ضلع: ایسٹ چمپارن | ریاست: بہار</p>
+
+</header>
+
 </div>
 
-</p></section><section><h2>Development Plans</h2><ul class="promise"><li>Village road improvement</li><li>Clean drinking water supply</li><li>Better drainage system</li><li>Healthcare camps</li><li>Support for farmers</li><li>Skill training for youth</li><li>Education support for poor students</li></ul></section><section><h2>Contact Campaign Office</h2><p><b>Phone:</b> 6367532227</p><p><b>WhatsApp:</b> 6367532227</p><p><b>Office Address:</b> Kodariya Bazar, Noori Masjid</p><a class="button" href="https://wa.me/916367532227">Join Campaign on WhatsApp</a>
 
-<section><h2>Volunteer Registration</h2><form onsubmit="sendMessage(); return false;"><input id="name" type="text" placeholder="Name" required><br><br>
+<section>
 
-<input id="phone" type="text" placeholder="Mobile Number" required><br><br>
+<div class="lang en">
 
-<input id="village" type="text" placeholder="Village Name"><br><br>
+<h2>Campaign Message</h2>
 
-<textarea id="help" placeholder="How would you like to help?"></textarea><br><br><button type="submit">Join Campaign</button>
+<p>Development for every family.</p>
 
-</form></section><script>
+<p>Better roads, clean drinking water and employment opportunities for youth.</p>
+
+</div>
+
+
+<div class="lang hi" style="display:none;">
+
+<h2>चुनावी संदेश</h2>
+
+<p>हर परिवार का विकास हमारा लक्ष्य है।</p>
+
+<p>बेहतर सड़कें, स्वच्छ पेयजल और युवाओं के लिए रोजगार के अवसर।</p>
+
+</div>
+
+
+<div class="lang ur" style="display:none;">
+
+<h2>انتخابی پیغام</h2>
+
+<p>ہر خاندان کی ترقی ہمارا مقصد ہے۔</p>
+
+<p>بہتر سڑکیں، صاف پینے کا پانی اور نوجوانوں کے لیے روزگار۔</p>
+
+</div>
+
+</section>
+
+
+<section>
+
+<div class="lang en">
+
+<h2>Development Plans</h2>
+
+<ul>
+
+<li>Village road improvement</li>
+
+<li>Clean drinking water supply</li>
+
+<li>Better drainage system</li>
+
+<li>Healthcare camps</li>
+
+<li>Support for farmers</li>
+
+<li>Skill training for youth</li>
+
+<li>Education support for poor students</li>
+
+</ul>
+
+</div>
+
+
+<div class="lang hi" style="display:none;">
+
+<h2>विकास योजनाएं</h2>
+
+<ul>
+
+<li>गांव की सड़कों का सुधार</li>
+
+<li>स्वच्छ पेयजल की व्यवस्था</li>
+
+<li>बेहतर जल निकासी व्यवस्था</li>
+
+<li>स्वास्थ्य शिविर</li>
+
+<li>किसानों के लिए सहायता</li>
+
+<li>युवाओं के लिए कौशल प्रशिक्षण</li>
+
+<li>गरीब छात्रों के लिए शिक्षा सहायता</li>
+
+</ul>
+
+</div>
+
+
+<div class="lang ur" style="display:none;">
+
+<h2>ترقیاتی منصوبے</h2>
+
+<ul>
+
+<li>دیہات کی سڑکوں کی بہتری</li>
+
+<li>صاف پینے کے پانی کی فراہمی</li>
+
+<li>بہتر نکاسی آب</li>
+
+<li>ہیلتھ کیمپ</li>
+
+<li>کسانوں کی مدد</li>
+
+<li>نوجوانوں کی اسکل ٹریننگ</li>
+
+<li>غریب طلبہ کی تعلیمی مدد</li>
+
+</ul>
+
+</div>
+
+</section>
+
+
+<section>
+
+<div class="lang en">
+
+<h2>Contact Campaign Office</h2>
+
+<p>Phone: 6367532227</p>
+
+<p>Office: Kodariya Bazar, Noori Masjid</p>
+
+<a href="https://wa.me/916367532227" class="button">Join Campaign on WhatsApp</a>
+
+<br><br>
+
+<a href="#" onclick="shareCampaign()" class="button">📢 Share This Campaign</a>
+
+</div>
+
+
+<div class="lang hi" style="display:none;">
+
+<h2>संपर्क अभियान कार्यालय</h2>
+
+<p>फोन: 6367532227</p>
+
+<p>कार्यालय: कोदरिया बाजार, नूरी मस्जिद</p>
+
+<a href="https://wa.me/916367532227" class="button">व्हाट्सएप पर जुड़ें</a>
+
+<br><br>
+
+<a href="#" onclick="shareCampaign()" class="button">📢 इस अभियान को साझा करें</a>
+
+</div>
+
+
+<div class="lang ur" style="display:none;">
+
+<h2>رابطہ مہم دفتر</h2>
+
+<p>فون: 6367532227</p>
+
+<p>دفتر: کودریہ بازار، نوری مسجد</p>
+
+<a href="https://wa.me/916367532227" class="button">واٹس ایپ پر شامل ہوں</a>
+
+<br><br>
+
+<a href="#" onclick="shareCampaign()" class="button">📢 اس مہم کو شیئر کریں</a>
+
+</div>
+
+</section>
+
+
+<section>
+
+<div class="lang en">
+
+<h2>Volunteer Registration</h2>
+
+<form onsubmit="sendMessage(); return false;">
+
+<input id="name" type="text" placeholder="Name"><br>
+
+<input id="phone" type="text" placeholder="Mobile Number"><br>
+
+<input id="village" type="text" placeholder="Village Name"><br>
+
+<textarea id="help" placeholder="How would you like to help?"></textarea><br>
+
+<button type="submit">Join Campaign</button>
+
+</form>
+
+</div>
+
+
+<div class="lang hi" style="display:none;">
+
+<h2>स्वयंसेवक पंजीकरण</h2>
+
+<form onsubmit="sendMessage(); return false;">
+
+<input id="name" type="text" placeholder="नाम"><br>
+
+<input id="phone" type="text" placeholder="मोबाइल नंबर"><br>
+
+<input id="village" type="text" placeholder="गांव का नाम"><br>
+
+<textarea id="help" placeholder="आप कैसे मदद करना चाहते हैं?"></textarea><br>
+
+<button type="submit">अभियान से जुड़ें</button>
+
+</form>
+
+</div>
+
+
+<div class="lang ur" style="display:none;">
+
+<h2>رضاکار رجسٹریشن</h2>
+
+<form onsubmit="sendMessage(); return false;">
+
+<input id="name" type="text" placeholder="نام"><br>
+
+<input id="phone" type="text" placeholder="موبائل نمبر"><br>
+
+<input id="village" type="text" placeholder="گاؤں کا نام"><br>
+
+<textarea id="help" placeholder="آپ کیسے مدد کرنا چاہتے ہیں؟"></textarea><br>
+
+<button type="submit">مہم میں شامل ہوں</button>
+
+</form>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<p>© 2026 Panchayat Election Campaign | Md Talib Hussain</p>
+
+</footer>
+
+
+<script>
+
+function setLanguage(lang){
+
+var elements=document.getElementsByClassName("lang");
+
+for(var i=0;i<elements.length;i++){
+
+elements[i].style.display="none";
+
+}
+
+var selected=document.getElementsByClassName(lang);
+
+for(var i=0;i<selected.length;i++){
+
+selected[i].style.display="block";
+
+}
+
+}
+
+
+function autoLanguage(){
+
+var userLang=navigator.language || navigator.userLanguage;
+
+if(userLang.startsWith("hi")){
+
+setLanguage("hi");
+
+}
+
+else if(userLang.startsWith("ur")){
+
+setLanguage("ur");
+
+}
+
+else{
+
+setLanguage("en");
+
+}
+
+}
+
 
 function sendMessage(){
 
-var name = document.getElementById("name").value;
-var phone = document.getElementById("phone").value;
-var village = document.getElementById("village").value;
-var help = document.getElementById("help").value;
+var name=document.getElementById("name").value;
 
-var message = "Volunteer Request:%0A"
-+ "Name: " + name + "%0A"
-+ "Phone: " + phone + "%0A"
-+ "Village: " + village + "%0A"
-+ "Help: " + help;
+var phone=document.getElementById("phone").value;
 
-var url = "https://wa.me/916367532227?text=" + message;
+var village=document.getElementById("village").value;
 
-window.open(url,"_blank");
+var help=document.getElementById("help").value;
+
+var message="Volunteer Request:%0A"+
+"Name: "+name+"%0A"+
+"Phone: "+phone+"%0A"+
+"Village: "+village+"%0A"+
+"Help: "+help;
+
+var url="https://wa.me/916367532227?text="+message;
+
+window.open(url,'_blank');
+
+}
+
+
+function shareCampaign(){
+
+var message="Support Md Talib Hussain for Panchayat Election.\n\nDevelopment for every family.\nBetter roads, clean water and jobs for youth.\n\nVisit Campaign Website:\nhttps://talib022.github.io/Pan";
+
+var url="https://wa.me/?text="+encodeURIComponent(message);
+
+window.open(url,'_blank');
 
 }
 
 </script>
 
-<input type="text" placeholder="Mobile Number" required><br><br>
+</body>
 
-<input type="text" placeholder="Village Name"><br><br>
-
-<textarea placeholder="How would you like to help?"></textarea><br><br><button type="submit">Submit</button>
-
-</form></section><section><h2>Languages</h2><p>Hindi: हर परिवार का विकास हमारा लक्ष्य है। बेहतर सड़क, पानी और रोजगार।<br><br>
-
-Urdu: ہر خاندان کی ترقی ہمارا مقصد ہے۔ بہتر سڑک، پانی اور روزگار۔
-
-
-<section>
-<h2>Contact / Support</h2>
-
-<a href="tel:+916367532227" class="button">📞 Call Now</a>
-
-<br><br>
-
-<a href="https://wa.me/916367532227" class="button">💬 WhatsApp</a>
-
-<a href="https://wa.me/916367532227?text=Namaste%20I%20support%20Md%20Talib%20Hussain%20for%20Bell%20Ahiram%20Panchayat%20Election.%20We%20want%20better%20roads,%20clean%20water,%20education%20and%20employment." class="button">🙌 Support Campaign</a>
-
-<br><br>
-.
-<a href="mailto:alamnazim55@gmail.com?subject=Panchayat Feedback" class="button">📧 Send Feedback</a>
-
-
-
-</section>
-  
-<footer><p>© 2026 Panchayat Election Campaign | Md Talib Hussain</p>
-</footer>
-
-<script>
-function setLanguage(lang) {
-
-var elements = document.getElementsByClassName("lang");
-
-for (var i = 0; i < elements.length; i++) {
-elements[i].style.display = "none";
-}
-
-var selected = document.getElementsByClassName(lang);
-
-for (var i = 0; i < selected.length; i++) {
-selected[i].style.display = "block";
-}
-
-}
-</script></body></html>
-
-
-
-
-
-
-
-
-
-
-
-
+</html>
