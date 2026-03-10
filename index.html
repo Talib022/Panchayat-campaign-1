@@ -50,10 +50,6 @@ color:black;
 border-bottom:1px solid #eee;
 }
 
-.menu a:hover{
-background:#f2f2f2;
-}
-
 section{
 background:white;
 margin:15px;
@@ -85,8 +81,34 @@ background:#25D366;
 color:white;
 border:none;
 border-radius:5px;
-cursor:pointer;
 }
+
+input,textarea{
+width:90%;
+padding:8px;
+margin:5px;
+}
+
+.counter{
+font-size:22px;
+color:#006400;
+font-weight:bold;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
+margin-top:15px;
+}
+
+.gallery img{
+width:100%;
+border-radius:8px;
+box-shadow:0 0 6px rgba(0,0,0,0.2);
+}
+
+.lang{display:none;}
 
 footer{
 background:#222;
@@ -95,15 +117,11 @@ text-align:center;
 padding:15px;
 }
 
-[class^="lang-"]{
-display:none;
-}
-
 </style>
 
 </head>
 
-<body>
+<body onload="loadCounters();setLanguage('en')">
 
 <div class="lang-buttons">
 <button onclick="setLanguage('en')">English</button>
@@ -113,9 +131,9 @@ display:none;
 
 <header>
 
-<h1 class="lang-en">Vote for Development</h1>
-<h1 class="lang-hi">विकास के लिए वोट दें</h1>
-<h1 class="lang-ur">ترقی کے لئے ووٹ دیں</h1>
+<h1 class="lang en">Vote for Development</h1>
+<h1 class="lang hi">विकास के लिए वोट दें</h1>
+<h1 class="lang ur">ترقی کے لئے ووٹ دیں</h1>
 
 <h2>Md Talib Hussain</h2>
 
@@ -124,12 +142,10 @@ display:none;
 </header>
 
 <div id="menu" class="menu">
-
 <a href="about.html">About Me</a>
 <a href="future.html">Future Plan</a>
 <a href="past.html">Past Work</a>
 <a href="corruption.html">Other Leader Corruption</a>
-
 </div>
 
 <section>
@@ -151,20 +167,144 @@ Pincode: 845430
 
 <section>
 
-<a href="about.html" class="button">About Me</a>
-<a href="future.html" class="button">Future Plan</a>
-<a href="past.html" class="button">Past Work</a>
-<a href="corruption.html" class="button">Other Leader Corruption</a>
+<p class="lang en">Development for every family. Better roads, water and employment.</p>
+<p class="lang hi">हर परिवार का विकास। बेहतर सड़क, पानी और रोजगार।</p>
+<p class="lang ur">ہر خاندان کی ترقی۔ بہتر سڑک، پانی اور روزگار۔</p>
 
 </section>
 
 <section>
 
-<a href="tel:6367532227" class="button">Call</a>
+<a href="tel:6367532227" class="button">📞 Call</a>
 
-<a href="https://wa.me/916367532227" class="button">WhatsApp</a>
+<a href="https://wa.me/916367532227" class="button">💬 WhatsApp</a>
 
-<a href="https://wa.me/?text=Support%20Md%20Talib%20Hussain%20for%20Panchayat%20Election%20https://talib022.github.io/Panchayat-campaign-1/" class="button">Share Campaign</a>
+<a href="https://wa.me/?text=Support%20Md%20Talib%20Hussain%20for%20Panchayat%20Election%20https://talib022.github.io/Panchayat-campaign-1/" class="button">📢 Share Campaign</a>
+
+</section>
+
+<section>
+
+<h2>Volunteer Registration</h2>
+
+<input id="vname" placeholder="Name"><br>
+<input id="vphone" placeholder="Mobile Number"><br>
+<input id="vvillage" placeholder="Village"><br>
+
+<button onclick="sendVolunteer()" class="button">Join Campaign</button>
+
+</section>
+
+<section>
+
+<h2>Public Complaint</h2>
+
+<input id="cname" placeholder="Your Name"><br>
+<textarea id="cissue" placeholder="Write village problem"></textarea><br>
+
+<button onclick="sendComplaint()" class="button">Submit Complaint</button>
+
+</section>
+
+<section>
+
+<h2>Campaign Location</h2>
+
+<iframe
+src="https://maps.google.com/maps?q=Kodariya%20Hetim%20845430&t=&z=15&ie=UTF8&iwloc=&output=embed"
+width="100%" height="300"></iframe>
+
+<p>Kodariya Hetim, East Champaran, Bihar</p>
+
+</section>
+
+<section>
+
+<h2>Scan QR Code</h2>
+
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://talib022.github.io/Panchayat-campaign-1/">
+
+</section>
+
+<section>
+
+<div class="counter">
+👥 Supporters Joined: <span id="supportCount">125</span>
+</div>
+
+<button onclick="increaseSupport()" class="button">Support This Campaign</button>
+
+</section>
+
+<section>
+
+<div class="counter">
+🌐 Visitors: <span id="visitCount">0</span>
+</div>
+
+</section>
+
+<section>
+
+<h2>Village Development Report Card</h2>
+
+<table style="width:100%;border-collapse:collapse">
+
+<tr style="background:#006400;color:white">
+<th>Development Work</th>
+<th>Our Work</th>
+<th>Previous Leaders</th>
+</tr>
+
+<tr>
+<td>Village Roads</td>
+<td style="color:green">Multiple Roads Built</td>
+<td style="color:red">Only One Road</td>
+</tr>
+
+<tr>
+<td>Solar Electricity</td>
+<td style="color:green">Solar Plants Installed</td>
+<td style="color:red">No Work</td>
+</tr>
+
+<tr>
+<td>Budget Usage</td>
+<td style="color:green">₹50 Lakh Development</td>
+<td style="color:red">₹2 Crore Misused</td>
+</tr>
+
+</table>
+
+</section>
+
+<section>
+
+<h2>Development Work Gallery</h2>
+
+<div class="gallery">
+
+<div>
+<img src="road.jpg">
+<p>Village Road Construction</p>
+</div>
+
+<div>
+<img src="solar.jpg">
+<p>Solar Plant Installation</p>
+</div>
+
+<div>
+<img src="jobs.jpg">
+<p>Youth Employment Support</p>
+</div>
+
+<div>
+<img src="village.jpg">
+<p>Village Development Work</p>
+</div>
+
+</div>
 
 </section>
 
@@ -177,33 +317,53 @@ Pincode: 845430
 <script>
 
 function toggleMenu(){
-
 var menu=document.getElementById("menu");
-
-menu.style.display = menu.style.display==="block" ? "none" : "block";
-
+menu.style.display = menu.style.display==="block" ? "none":"block";
 }
 
 function setLanguage(lang){
-
-document.querySelectorAll("[class^='lang-']").forEach(el=>el.style.display="none");
-
-document.querySelectorAll(".lang-"+lang).forEach(el=>el.style.display="block");
-
+var elements=document.getElementsByClassName("lang");
+for(var i=0;i<elements.length;i++){elements[i].style.display="none";}
+var selected=document.getElementsByClassName(lang);
+for(var i=0;i<selected.length;i++){selected[i].style.display="block";}
 }
 
-setLanguage("en");
+function sendVolunteer(){
+var name=document.getElementById("vname").value;
+var phone=document.getElementById("vphone").value;
+var village=document.getElementById("vvillage").value;
 
-document.addEventListener("click", function(event){
+var msg="Volunteer Registration:%0AName: "+name+"%0APhone: "+phone+"%0AVillage: "+village;
 
-var menu=document.getElementById("menu");
-var icon=document.querySelector(".menu-icon");
-
-if(!menu.contains(event.target) && !icon.contains(event.target)){
-menu.style.display="none";
+window.open("https://wa.me/916367532227?text="+msg);
 }
 
-});
+function sendComplaint(){
+var name=document.getElementById("cname").value;
+var issue=document.getElementById("cissue").value;
+
+var msg="Village Complaint:%0AName: "+name+"%0AIssue: "+issue;
+
+window.open("https://wa.me/916367532227?text="+msg);
+}
+
+function increaseSupport(){
+var count=document.getElementById("supportCount");
+var num=parseInt(count.innerText)+1;
+count.innerText=num;
+localStorage.setItem("supportCount",num);
+}
+
+function loadCounters(){
+
+var savedSupport=localStorage.getItem("supportCount");
+if(savedSupport){document.getElementById("supportCount").innerText=savedSupport;}
+
+var visit=localStorage.getItem("visitCount");
+visit=visit?parseInt(visit)+1:1;
+document.getElementById("visitCount").innerText=visit;
+localStorage.setItem("visitCount",visit);
+}
 
 </script>
 
