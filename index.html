@@ -142,10 +142,12 @@ padding:15px;
 </header>
 
 <div id="menu" class="menu">
+
 <a href="about.html">About Me</a>
 <a href="future.html">Future Plan</a>
 <a href="past.html">Past Work</a>
 <a href="corruption.html">Other Leader Corruption</a>
+
 </div>
 
 <section>
@@ -175,21 +177,29 @@ Pincode: 845430
 
 <section>
 
-<a href="tel:6367532227" class="button">📞 Call</a>
+<a href="tel:6367532227" class="button lang en">📞 Call</a>
+<a href="tel:6367532227" class="button lang hi">📞 कॉल करें</a>
+<a href="tel:6367532227" class="button lang ur">📞 کال کریں</a>
 
-<a href="https://wa.me/916367532227" class="button">💬 WhatsApp</a>
+<a href="https://wa.me/916367532227" class="button lang en">💬 WhatsApp</a>
+<a href="https://wa.me/916367532227" class="button lang hi">💬 व्हाट्सऐप</a>
+<a href="https://wa.me/916367532227" class="button lang ur">💬 واٹس ایپ</a>
 
-<a href="https://wa.me/?text=Support%20Md%20Talib%20Hussain%20for%20Panchayat%20Election%20https://talib022.github.io/Panchayat-campaign-1/" class="button">📢 Share Campaign</a>
+<a href="https://wa.me/?text=Support%20Md%20Talib%20Hussain%20for%20Panchayat%20Election%20https://talib022.github.io/Panchayat-campaign-1/" class="button lang en">📢 Share Campaign</a>
+<a href="https://wa.me/?text=Support%20Md%20Talib%20Hussain" class="button lang hi">📢 अभियान साझा करें</a>
+<a href="https://wa.me/?text=Support%20Md%20Talib%20Hussain" class="button lang ur">📢 مہم شیئر کریں</a>
 
 </section>
 
 <section>
 
-<h2>Volunteer Registration</h2>
+<h2 class="lang en">Volunteer Registration</h2>
+<h2 class="lang hi">स्वयंसेवक पंजीकरण</h2>
+<h2 class="lang ur">رضاکار رجسٹریشن</h2>
 
-<input id="vname" placeholder="Name"><br>
-<input id="vphone" placeholder="Mobile Number"><br>
-<input id="vvillage" placeholder="Village"><br>
+<input id="vname" placeholder="Name">
+<input id="vphone" placeholder="Mobile Number">
+<input id="vvillage" placeholder="Village">
 
 <button onclick="sendVolunteer()" class="button">Join Campaign</button>
 
@@ -197,10 +207,12 @@ Pincode: 845430
 
 <section>
 
-<h2>Public Complaint</h2>
+<h2 class="lang en">Public Complaint</h2>
+<h2 class="lang hi">जन शिकायत</h2>
+<h2 class="lang ur">عوامی شکایت</h2>
 
-<input id="cname" placeholder="Your Name"><br>
-<textarea id="cissue" placeholder="Write village problem"></textarea><br>
+<input id="cname" placeholder="Name">
+<textarea id="cissue" placeholder="Write village problem"></textarea>
 
 <button onclick="sendComplaint()" class="button">Submit Complaint</button>
 
@@ -355,7 +367,6 @@ localStorage.setItem("supportCount",num);
 }
 
 function loadCounters(){
-
 var savedSupport=localStorage.getItem("supportCount");
 if(savedSupport){document.getElementById("supportCount").innerText=savedSupport;}
 
@@ -369,4 +380,3 @@ localStorage.setItem("visitCount",visit);
 
 </body>
 </html>
-
