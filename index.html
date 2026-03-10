@@ -77,7 +77,7 @@ color:#006400;
 </style>
 </head>
 
-<body>
+<body onload="setLanguage('en')">
 
 <div style="text-align:center;margin:10px;">
 <button onclick="setLanguage('en')" class="button">English</button>
@@ -89,9 +89,11 @@ color:#006400;
 
 <div class="lang en">
 <p>Better roads, clean drinking water and employment opportunities for youth.</p>
-</div><div class="lang hi" style="display:none;">
+</div>
+<div class="lang hi" style="display:none;">
 <p>बेहतर सड़कें, स्वच्छ पेयजल और युवाओं के लिए रोजगार के अवसर।</p>
-</div><div class="lang ur" style="display:none;">
+</div>
+<div class="lang ur" style="display:none;">
 <p>بہتر سڑکیں، صاف پینے کا پانی اور نوجوانوں کے لیے روزگار کے مواقع۔</p>
 </div>
 
@@ -151,10 +153,19 @@ Urdu: ہر خاندان کی ترقی ہمارا مقصد ہے۔ بہتر سڑک
 <a href="https://wa.me/916367532227?text=Namaste%20I%20support%20Md%20Talib%20Hussain%20for%20Bell%20Ahiram%20Panchayat%20Election.%20We%20want%20better%20roads,%20clean%20water,%20education%20and%20employment." class="button">🙌 Support Campaign</a>
 
 <br><br>
-
+.
 <a href="mailto:alamnazim55@gmail.com?subject=Panchayat Feedback" class="button">📧 Send Feedback</a>
+
+
+
+</section>
+  
+<footer><p>© 2026 Panchayat Election Campaign | Md Talib Hussain</p>
+</footer>
+
 <script>
 function setLanguage(lang) {
+
 var elements = document.getElementsByClassName("lang");
 
 for (var i = 0; i < elements.length; i++) {
@@ -166,9 +177,10 @@ var selected = document.getElementsByClassName(lang);
 for (var i = 0; i < selected.length; i++) {
 selected[i].style.display = "block";
 }
-  
-</script>
-</section><footer><p>© 2026 Panchayat Election Campaign | Md Talib Hussain</p></footer></body></html>
+
+}
+</script></body></html>
+
 
 
 
