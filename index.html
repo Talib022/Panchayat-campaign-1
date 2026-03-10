@@ -1,1 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Md Talib Hussain | Panchayat Campaign</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#f2f2f2;
+}
+
+header{
+background:#006400;
+color:white;
+text-align:center;
+padding:25px;
+position:relative;
+}
+
+.menu-icon{
+position:absolute;
+right:20px;
+top:20px;
+font-size:28px;
+cursor:pointer;
+}
+
+.menu{
+display:none;
+background:white;
+position:absolute;
+right:10px;
+top:70px;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+border-radius:8px;
+z-index:100;
+}
+
+.menu a{
+display:block;
+padding:12px 20px;
+text-decoration:none;
+color:black;
+border-bottom:1px solid #eee;
+}
+
+.menu a:hover{
+background:#f2f2f2;
+}
+
+section{
+background:white;
+margin:15px;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 8px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+.button{
+display:inline-block;
+background:#25D366;
+color:white;
+padding:12px 18px;
+border-radius:6px;
+text-decoration:none;
+margin:6px;
+}
+
+.lang-buttons{
+text-align:center;
+margin:10px;
+}
+
+.lang-buttons button{
+padding:8px 12px;
+margin:5px;
+background:#25D366;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+footer{
+background:#222;
+color:white;
+text-align:center;
+padding:15px;
+}
+
+[class^="lang-"]{
+display:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="lang-buttons">
+<button onclick="setLanguage('en')">English</button>
+<button onclick="setLanguage('hi')">Hindi</button>
+<button onclick="setLanguage('ur')">Urdu</button>
+</div>
+
+<header>
+
+<h1 class="lang-en">Vote for Development</h1>
+<h1 class="lang-hi">विकास के लिए वोट दें</h1>
+<h1 class="lang-ur">ترقی کے لئے ووٹ دیں</h1>
+
+<h2>Md Talib Hussain</h2>
+
+<div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+</header>
+
+<div id="menu" class="menu">
+
+<a href="about.html">About Me</a>
+<a href="future.html">Future Plan</a>
+<a href="past.html">Past Work</a>
+<a href="corruption.html">Other Leader Corruption</a>
+
+</div>
+
+<section>
+
+<img src="talibjpg.jpg" width="200">
+
+<p><b>Name:</b> Md Talib Hussain</p>
+<p><b>Father:</b> Md Jabir Hussain</p>
+<p><b>Age:</b> 35</p>
+<p><b>Symbol:</b> 🍆 Brinjal</p>
+
+<p>
+Kodariya Bazar, Noori Masjid<br>
+District East Champaran<br>
+Pincode: 845430
+</p>
+
+</section>
+
+<section>
+
+<a href="about.html" class="button">About Me</a>
+<a href="future.html" class="button">Future Plan</a>
+<a href="past.html" class="button">Past Work</a>
+<a href="corruption.html" class="button">Other Leader Corruption</a>
+
+</section>
+
+<section>
+
+<a href="tel:6367532227" class="button">Call</a>
+
+<a href="https://wa.me/916367532227" class="button">WhatsApp</a>
+
+<a href="https://wa.me/?text=Support%20Md%20Talib%20Hussain%20for%20Panchayat%20Election%20https://talib022.github.io/Panchayat-campaign-1/" class="button">Share Campaign</a>
+
+</section>
+
+<footer>
+
+<p>© 2026 Panchayat Election Campaign | Md Talib Hussain</p>
+
+</footer>
+
+<script>
+
+function toggleMenu(){
+
+var menu=document.getElementById("menu");
+
+menu.style.display = menu.style.display==="block" ? "none" : "block";
+
+}
+
+function setLanguage(lang){
+
+document.querySelectorAll("[class^='lang-']").forEach(el=>el.style.display="none");
+
+document.querySelectorAll(".lang-"+lang).forEach(el=>el.style.display="block");
+
+}
+
+setLanguage("en");
+
+document.addEventListener("click", function(event){
+
+var menu=document.getElementById("menu");
+var icon=document.querySelector(".menu-icon");
+
+if(!menu.contains(event.target) && !icon.contains(event.target)){
+menu.style.display="none";
+}
+
+});
+
+</script>
+
+</body>
+</html>
