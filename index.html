@@ -9,11 +9,7 @@
 
 <style>
 
-body{
-margin:0;
-font-family:Arial;
-background:#f2f2f2;
-}
+body{margin:0;font-family:Arial;background:#f2f2f2;}
 
 header{
 background:#006400;
@@ -69,10 +65,7 @@ text-decoration:none;
 margin:6px;
 }
 
-.lang-buttons{
-text-align:center;
-margin:10px;
-}
+.lang-buttons{text-align:center;margin:10px;}
 
 .lang-buttons button{
 padding:8px 12px;
@@ -83,17 +76,9 @@ border:none;
 border-radius:5px;
 }
 
-input,textarea{
-width:90%;
-padding:8px;
-margin:5px;
-}
+input,textarea{width:90%;padding:8px;margin:5px;}
 
-.counter{
-font-size:22px;
-color:#006400;
-font-weight:bold;
-}
+.counter{font-size:22px;color:#006400;font-weight:bold;}
 
 .gallery{
 display:grid;
@@ -117,39 +102,54 @@ text-align:center;
 padding:15px;
 }
 
-/* HERO BANNER */
+/* Hero banner */
 
 .hero{
 width:100%;
 height:350px;
-background:url('banner.jpg') center/cover no-repeat;
+background:url('banner.jpg') center center/cover no-repeat;
 display:flex;
 align-items:center;
 justify-content:center;
+text-align:center;
 color:white;
-font-size:35px;
+font-size:34px;
 font-weight:bold;
-text-shadow:2px 2px 8px black;
+text-shadow:3px 3px 10px black;
+padding:20px;
 }
 
-/* SLIDER */
+/* Announcement ticker */
 
-.slider{
-position:relative;
-max-width:100%;
+.announcement{
+background:#ffcc00;
+color:black;
+font-weight:bold;
+padding:8px;
 overflow:hidden;
+white-space:nowrap;
 }
 
-.slide{
-display:none;
+.announcement span{
+display:inline-block;
+padding-left:100%;
+animation:scrollText 18s linear infinite;
 }
 
-.slide img{
-width:100%;
-border-radius:10px;
+@keyframes scrollText{
+0%{transform:translateX(0);}
+100%{transform:translateX(-100%);}
 }
 
-/* VIDEO SECTION */
+/* Slider */
+
+.slider{position:relative;max-width:100%;overflow:hidden;}
+
+.slide{display:none;}
+
+.slide img{width:100%;border-radius:10px;}
+
+/* Video placeholder */
 
 .video-container{
 display:grid;
@@ -157,10 +157,58 @@ grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:15px;
 }
 
-.video-container iframe{
-width:100%;
+.video-box{
+background:#eee;
 height:200px;
+display:flex;
+align-items:center;
+justify-content:center;
 border-radius:10px;
+font-weight:bold;
+color:#555;
+}
+
+/* Popup */
+
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:9999;
+}
+
+.popup-content{
+background:white;
+padding:25px;
+border-radius:10px;
+text-align:center;
+max-width:320px;
+box-shadow:0 0 10px rgba(0,0,0,0.3);
+position:relative;
+}
+
+.popup-btn{
+background:#25D366;
+color:white;
+padding:10px 16px;
+border-radius:6px;
+text-decoration:none;
+display:inline-block;
+margin-top:10px;
+}
+
+.close-popup{
+position:absolute;
+top:10px;
+right:15px;
+font-size:20px;
+cursor:pointer;
 }
 
 </style>
@@ -186,6 +234,15 @@ border-radius:10px;
 <div class="menu-icon" onclick="toggleMenu()">☰</div>
 
 </header>
+
+<div class="announcement">
+<span>
+✔ Road construction completed in Kodariya village |
+✔ Solar plants installed |
+✔ Youth employment support |
+✔ Join campaign for village development
+</span>
+</div>
 
 <div id="menu" class="menu">
 <a href="about.html">About Me</a>
@@ -227,25 +284,14 @@ Pincode: 845430
 
 <section>
 
-<a href="tel:6367532227" class="button lang en">📞 Call</a>
-<a href="tel:6367532227" class="button lang hi">📞 कॉल करें</a>
-<a href="tel:6367532227" class="button lang ur">📞 کال کریں</a>
-
-<a href="https://wa.me/916367532227" class="button lang en">💬 WhatsApp</a>
-<a href="https://wa.me/916367532227" class="button lang hi">💬 व्हाट्सऐप</a>
-<a href="https://wa.me/916367532227" class="button lang ur">💬 واٹس ایپ</a>
-
-<a href="https://wa.me/?text=Support%20Md%20Talib%20Hussain%20for%20Panchayat%20Election%20https://talib022.github.io/Panchayat-campaign-1/" class="button lang en">📢 Share Campaign</a>
-<a href="https://wa.me/?text=Support%20Md%20Talib%20Hussain" class="button lang hi">📢 अभियान साझा करें</a>
-<a href="https://wa.me/?text=Support%20Md%20Talib%20Hussain" class="button lang ur">📢 مہم شیئر کریں</a>
+<a href="tel:6367532227" class="button">📞 Call</a>
+<a href="https://wa.me/916367532227" class="button">💬 WhatsApp</a>
 
 </section>
 
 <section>
 
-<h2 class="lang en">Volunteer Registration</h2>
-<h2 class="lang hi">स्वयंसेवक पंजीकरण</h2>
-<h2 class="lang ur">رضاکار رجسٹریشن</h2>
+<h2>Volunteer Registration</h2>
 
 <input id="vname" placeholder="Name">
 <input id="vphone" placeholder="Mobile Number">
@@ -257,9 +303,7 @@ Pincode: 845430
 
 <section>
 
-<h2 class="lang en">Public Complaint</h2>
-<h2 class="lang hi">जन शिकायत</h2>
-<h2 class="lang ur">عوامی شکایت</h2>
+<h2>Public Complaint</h2>
 
 <input id="cname" placeholder="Name">
 <textarea id="cissue" placeholder="Write village problem"></textarea>
@@ -275,8 +319,6 @@ Pincode: 845430
 <iframe
 src="https://maps.google.com/maps?q=Kodariya%20Hetim%20845430&t=&z=15&ie=UTF8&iwloc=&output=embed"
 width="100%" height="300"></iframe>
-
-<p>Kodariya Hetim, East Champaran, Bihar</p>
 
 </section>
 
@@ -308,64 +350,13 @@ width="100%" height="300"></iframe>
 
 <section>
 
-<h2>Village Development Report Card</h2>
-
-<table style="width:100%;border-collapse:collapse">
-
-<tr style="background:#006400;color:white">
-<th>Development Work</th>
-<th>Our Work</th>
-<th>Previous Leaders</th>
-</tr>
-
-<tr>
-<td>Village Roads</td>
-<td style="color:green">Multiple Roads Built</td>
-<td style="color:red">Only One Road</td>
-</tr>
-
-<tr>
-<td>Solar Electricity</td>
-<td style="color:green">Solar Plants Installed</td>
-<td style="color:red">No Work</td>
-</tr>
-
-<tr>
-<td>Budget Usage</td>
-<td style="color:green">₹50 Lakh Development</td>
-<td style="color:red">₹2 Crore Misused</td>
-</tr>
-
-</table>
-
-</section>
-
-<section>
-
 <h2>Development Work Gallery</h2>
 
 <div class="gallery">
-
-<div>
 <img src="road.jpg">
-<p>Village Road Construction</p>
-</div>
-
-<div>
 <img src="solar.jpg">
-<p>Solar Plant Installation</p>
-</div>
-
-<div>
 <img src="jobs.jpg">
-<p>Youth Employment Support</p>
-</div>
-
-<div>
 <img src="village.jpg">
-<p>Village Development Work</p>
-</div>
-
 </div>
 
 </section>
@@ -375,19 +366,9 @@ width="100%" height="300"></iframe>
 <h2>Campaign Highlights</h2>
 
 <div class="slider">
-
-<div class="slide">
-<img src="slide1.jpg">
-</div>
-
-<div class="slide">
-<img src="slide2.jpg">
-</div>
-
-<div class="slide">
-<img src="slide3.jpg">
-</div>
-
+<div class="slide"><img src="slide1.jpg"></div>
+<div class="slide"><img src="slide2.jpg"></div>
+<div class="slide"><img src="slide3.jpg"></div>
 </div>
 
 </section>
@@ -397,13 +378,37 @@ width="100%" height="300"></iframe>
 <h2>Campaign Videos</h2>
 
 <div class="video-container">
-
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
-
+<div class="video-box">Upload Campaign Video</div>
+<div class="video-box">Upload Campaign Video</div>
 </div>
 
 </section>
+
+<!-- WhatsApp Campaign Popup -->
+
+<div id="campaignPopup" class="popup">
+
+<div class="popup-content">
+
+<span class="close-popup" onclick="closePopup()">✖</span>
+
+<h3>Support Village Development</h3>
+
+<p>Join the campaign of Md Talib Hussain and help improve roads, water and employment.</p>
+
+<a href="https://wa.me/916367532227?text=I%20support%20Md%20Talib%20Hussain" class="popup-btn">
+Join WhatsApp Campaign
+</a>
+
+<br><br>
+
+<a href="https://wa.me/?text=Support%20Md%20Talib%20Hussain%20https://talib022.github.io/Panchayat-campaign-1/" class="popup-btn">
+Share Campaign
+</a>
+
+</div>
+
+</div>
 
 <footer>
 
@@ -472,6 +477,16 @@ slideIndex++;
 if(slideIndex>slides.length){slideIndex=1}
 slides[slideIndex-1].style.display="block";
 setTimeout(showSlides,3000);
+}
+
+/* Popup */
+
+setTimeout(function(){
+document.getElementById("campaignPopup").style.display="flex";
+},3000);
+
+function closePopup(){
+document.getElementById("campaignPopup").style.display="none";
 }
 
 </script>
