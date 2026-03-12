@@ -9,12 +9,13 @@
 
 <style>
 
-/* GLOBAL */
+body{margin:0;font-family:Arial;background:#f2f2f2;}
 
-body{
-margin:0;
-font-family:Arial;
-background:#f2f2f2;
+header{
+background:#006400;
+color:white;
+text-align:center;
+padding:25px;
 }
 
 section{
@@ -26,18 +27,6 @@ box-shadow:0 0 8px rgba(0,0,0,0.1);
 text-align:center;
 }
 
-/* HEADER */
-
-header{
-background:#006400;
-color:white;
-text-align:center;
-padding:25px;
-position:relative;
-}
-
-/* HERO */
-
 .hero{
 width:100%;
 height:350px;
@@ -46,24 +35,20 @@ display:flex;
 align-items:center;
 justify-content:center;
 color:white;
-font-size:36px;
+font-size:34px;
 font-weight:bold;
 text-shadow:3px 3px 10px black;
 }
 
-/* BUTTON */
-
 .button{
-display:inline-block;
 background:#25D366;
 color:white;
 padding:12px 18px;
 border-radius:6px;
 text-decoration:none;
 margin:6px;
+display:inline-block;
 }
-
-/* LANGUAGE */
 
 .lang-buttons{
 text-align:center;
@@ -78,8 +63,6 @@ color:white;
 border:none;
 border-radius:5px;
 }
-
-/* ANNOUNCEMENT */
 
 .announcement{
 background:#ffcc00;
@@ -100,33 +83,6 @@ animation:scroll 18s linear infinite;
 100%{transform:translateX(-100%);}
 }
 
-/* SLIDER */
-
-.vote-slide{
-display:none;
-}
-
-.vote-slide img{
-width:100%;
-border-radius:10px;
-}
-
-.prev,.next{
-cursor:pointer;
-position:absolute;
-top:45%;
-padding:12px;
-color:white;
-font-size:22px;
-background:rgba(0,0,0,0.6);
-border-radius:50%;
-}
-
-.prev{left:10px;}
-.next{right:10px;}
-
-/* GALLERY */
-
 .gallery{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
@@ -138,7 +94,12 @@ width:100%;
 border-radius:10px;
 }
 
-/* VIDEO */
+.vote-slide{display:none;}
+
+.vote-slide img{
+width:100%;
+border-radius:10px;
+}
 
 .video-container{
 display:grid;
@@ -155,34 +116,20 @@ justify-content:center;
 border-radius:10px;
 }
 
-/* SUPPORTERS */
-
-#supporterList{
-list-style:none;
-padding:0;
+.counter{
+font-size:22px;
+color:#006400;
+font-weight:bold;
 }
 
-/* POPUP */
-
-.popup{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.7);
-display:none;
-align-items:center;
-justify-content:center;
-z-index:9999;
-}
-
-.popup-content{
-background:white;
-padding:25px;
-border-radius:10px;
-max-width:320px;
-text-align:center;
+.poll-btn{
+background:#006400;
+color:white;
+border:none;
+padding:10px 16px;
+margin:6px;
+border-radius:6px;
+cursor:pointer;
 }
 
 footer{
@@ -192,10 +139,12 @@ text-align:center;
 padding:15px;
 }
 
+.lang{display:none;}
+
 </style>
 </head>
 
-<body onload="initSite()">
+<body onload="initSite();setLanguage('en')">
 
 <div class="lang-buttons">
 <button onclick="setLanguage('en')">English</button>
@@ -215,10 +164,7 @@ padding:15px;
 
 <div class="announcement">
 <span>
-✔ Road construction completed in Kodariya village |
-✔ Solar plants installed |
-✔ Youth employment support |
-✔ Join campaign for village development
+✔ Road construction completed | ✔ Solar plants installed | ✔ Youth employment support | ✔ Join campaign for village development
 </span>
 </div>
 
@@ -235,6 +181,12 @@ Development For Every Family
 <p><b>Age:</b> 35</p>
 <p><b>Symbol:</b> 🍆 Brinjal</p>
 
+<p>
+Kodariya Bazar, Noori Masjid<br>
+District East Champaran<br>
+Pincode: 845430
+</p>
+
 </section>
 
 <section>
@@ -248,8 +200,8 @@ Development For Every Family
 
 <h2>Volunteer Registration</h2>
 
-<input id="vname" placeholder="Name">
-<input id="village" placeholder="Village">
+<input id="vname" placeholder="Name"><br><br>
+<input id="vvillage" placeholder="Village"><br><br>
 
 <button class="button" onclick="sendVolunteer()">Join Campaign</button>
 
@@ -257,12 +209,12 @@ Development For Every Family
 
 <section>
 
-<h2>Village Complaint</h2>
+<h2>Public Complaint</h2>
 
-<input id="cname" placeholder="Name">
-<input id="cissue" placeholder="Village problem">
+<input id="cname" placeholder="Name"><br><br>
+<textarea id="cissue" placeholder="Village problem"></textarea><br><br>
 
-<button class="button" onclick="sendComplaint()">Submit</button>
+<button class="button" onclick="sendComplaint()">Submit Complaint</button>
 
 </section>
 
@@ -287,6 +239,24 @@ width="100%" height="300">
 
 <section>
 
+<div class="counter">
+👥 Supporters Joined: <span id="supportCount">0</span>
+</div>
+
+<button class="button" onclick="increaseSupport()">Support Campaign</button>
+
+</section>
+
+<section>
+
+<div class="counter">
+🌐 Visitors: <span id="visitCount">0</span>
+</div>
+
+</section>
+
+<section>
+
 <h2>Think Before Your Vote</h2>
 
 <div class="vote-slide">
@@ -297,14 +267,16 @@ width="100%" height="300">
 <img src="voter2.png">
 </div>
 
+<button onclick="changeVoteSlide()">Next</button>
+
 </section>
 
 <section>
 
 <h2>Village Opinion Poll</h2>
 
-<button onclick="vote('yes')">Yes</button>
-<button onclick="vote('no')">No</button>
+<button class="poll-btn" onclick="vote('yes')">Yes 👍</button>
+<button class="poll-btn" onclick="vote('no')">No 👎</button>
 
 <p>Yes Votes: <span id="yesVotes">0</span></p>
 <p>No Votes: <span id="noVotes">0</span></p>
@@ -313,7 +285,7 @@ width="100%" height="300">
 
 <section>
 
-<h2>Development Gallery</h2>
+<h2>Development Work Gallery</h2>
 
 <div class="gallery">
 
@@ -341,14 +313,43 @@ width="100%" height="300">
 
 <section>
 
-<h2>Supporter Membership</h2>
+<h2>Campaign Supporters</h2>
 
-<input id="sname" placeholder="Name">
-<input id="svillage" placeholder="Village">
+<input id="supportName" placeholder="Name"><br><br>
+<input id="supportVillage" placeholder="Village"><br><br>
 
-<button onclick="joinSupporter()">Join</button>
+<button class="button" onclick="joinCampaign()">Join Campaign</button>
 
-<ul id="supporterList"></ul>
+<ul id="supportList"></ul>
+
+</section>
+
+<section>
+
+<h2>Membership Card</h2>
+
+<input id="cardName" placeholder="Your Name"><br><br>
+
+<button class="button" onclick="generateCard()">Generate Card</button>
+
+<div id="cardBox" style="display:none;background:#006400;color:white;padding:20px;border-radius:10px;margin-top:15px">
+
+<h3>Campaign Supporter</h3>
+
+<p id="cardText"></p>
+
+<p>Md Talib Hussain</p>
+<p>Symbol: 🍆 Brinjal</p>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Share Campaign</h2>
+
+<button class="button" onclick="shareCampaign()">Share on WhatsApp</button>
 
 </section>
 
@@ -361,20 +362,48 @@ width="100%" height="300">
 <script>
 
 function initSite(){
+loadCounters();
 loadPoll();
 loadSupporters();
+showVoteSlides();
 }
 
-/* POLL */
+function setLanguage(lang){
+var elements=document.getElementsByClassName("lang");
+for(var i=0;i<elements.length;i++){elements[i].style.display="none";}
+var selected=document.getElementsByClassName(lang);
+for(var i=0;i<selected.length;i++){selected[i].style.display="block";}
+}
 
-function loadPoll(){
-document.getElementById("yesVotes").innerText=localStorage.getItem("yesVotes")||0;
-document.getElementById("noVotes").innerText=localStorage.getItem("noVotes")||0;
+function sendVolunteer(){
+var name=document.getElementById("vname").value;
+var village=document.getElementById("vvillage").value;
+window.open("https://wa.me/916367532227?text=Volunteer:"+name+" Village:"+village);
+}
+
+function sendComplaint(){
+var name=document.getElementById("cname").value;
+var issue=document.getElementById("cissue").value;
+window.open("https://wa.me/916367532227?text=Complaint:"+name+" Issue:"+issue);
+}
+
+function increaseSupport(){
+var num=parseInt(localStorage.getItem("supportCount")||0)+1;
+localStorage.setItem("supportCount",num);
+document.getElementById("supportCount").innerText=num;
+}
+
+function loadCounters(){
+var visit=parseInt(localStorage.getItem("visitCount")||0)+1;
+localStorage.setItem("visitCount",visit);
+document.getElementById("visitCount").innerText=visit;
+
+document.getElementById("supportCount").innerText=localStorage.getItem("supportCount")||0;
 }
 
 function vote(type){
 
-var votes=localStorage.getItem("userVotes")||0;
+var votes=parseInt(localStorage.getItem("userVotes")||0);
 
 if(votes>=4){
 alert("Voting limit reached");
@@ -393,30 +422,30 @@ localStorage.setItem("noVotes",(parseInt(localStorage.getItem("noVotes")||0)+1))
 }
 
 loadPoll();
-
 }
 
-/* SUPPORTERS */
-
-function loadSupporters(){
-
-var supporters=JSON.parse(localStorage.getItem("supporters")||"[]");
-
-var list=document.getElementById("supporterList");
-list.innerHTML="";
-
-supporters.forEach(function(s){
-var li=document.createElement("li");
-li.innerText=s.name+" ("+s.village+")";
-list.appendChild(li);
-});
-
+function loadPoll(){
+document.getElementById("yesVotes").innerText=localStorage.getItem("yesVotes")||0;
+document.getElementById("noVotes").innerText=localStorage.getItem("noVotes")||0;
 }
 
-function joinSupporter(){
+var voteIndex=0;
 
-var name=document.getElementById("sname").value;
-var village=document.getElementById("svillage").value;
+function showVoteSlides(){
+var slides=document.getElementsByClassName("vote-slide");
+for(var i=0;i<slides.length;i++){
+slides[i].style.display="none";
+}
+voteIndex++;
+if(voteIndex>slides.length){voteIndex=1;}
+slides[voteIndex-1].style.display="block";
+setTimeout(showVoteSlides,4000);
+}
+
+function joinCampaign(){
+
+var name=document.getElementById("supportName").value;
+var village=document.getElementById("supportVillage").value;
 
 var supporters=JSON.parse(localStorage.getItem("supporters")||"[]");
 
@@ -425,32 +454,43 @@ supporters.push({name:name,village:village});
 localStorage.setItem("supporters",JSON.stringify(supporters));
 
 loadSupporters();
+}
+
+function loadSupporters(){
+
+var supporters=JSON.parse(localStorage.getItem("supporters")||"[]");
+
+var list=document.getElementById("supportList");
+
+list.innerHTML="";
+
+supporters.forEach(function(p){
+
+var li=document.createElement("li");
+
+li.innerText="✔ "+p.name+" ("+p.village+")";
+
+list.appendChild(li);
+
+});
 
 }
 
-/* VOLUNTEER */
+function generateCard(){
 
-function sendVolunteer(){
+var name=document.getElementById("cardName").value;
 
-var name=document.getElementById("vname").value;
-var village=document.getElementById("village").value;
+document.getElementById("cardText").innerText=name;
 
-var msg="Volunteer Registration: "+name+" Village: "+village;
-
-window.open("https://wa.me/916367532227?text="+msg);
+document.getElementById("cardBox").style.display="block";
 
 }
 
-/* COMPLAINT */
+function shareCampaign(){
 
-function sendComplaint(){
+var message="Support Md Talib Hussain for Panchayat Election https://talib022.github.io/Panchayat-campaign-1/";
 
-var name=document.getElementById("cname").value;
-var issue=document.getElementById("cissue").value;
-
-var msg="Village Complaint: "+name+" Problem: "+issue;
-
-window.open("https://wa.me/916367532227?text="+msg);
+window.open("https://wa.me/?text="+encodeURIComponent(message));
 
 }
 
