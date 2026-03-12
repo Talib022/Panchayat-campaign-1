@@ -149,6 +149,30 @@ animation:scrollText 18s linear infinite;
 
 .slide img{width:100%;border-radius:10px;}
 
+/* Think Before Vote Slider */
+
+.vote-slider{
+position:relative;
+max-width:100%;
+overflow:hidden;
+}
+
+.vote-slide{
+display:none;
+}
+
+.vote-slide img{
+width:100%;
+border-radius:10px;
+}
+
+.vote-caption{
+font-size:18px;
+font-weight:bold;
+margin-top:10px;
+color:#b30000;
+}
+
 /* Video placeholder */
 
 .video-container{
@@ -361,6 +385,32 @@ width="100%" height="300"></iframe>
 
 </section>
 
+<!-- THINK BEFORE YOUR VOTE SECTION -->
+
+<section>
+
+<h2>Think Before Your Vote</h2>
+
+<div class="vote-slider">
+
+<div class="vote-slide">
+<img src="voter1.png">
+<p class="vote-caption">
+₹500 today may destroy 5 years of development.
+</p>
+</div>
+
+<div class="vote-slide">
+<img src="voter2.png">
+<p class="vote-caption">
+Choose leaders who work for people, not those who buy votes.
+</p>
+</div>
+
+</div>
+
+</section>
+
 <section>
 
 <h2>Campaign Highlights</h2>
@@ -383,8 +433,6 @@ width="100%" height="300"></iframe>
 </div>
 
 </section>
-
-<!-- WhatsApp Campaign Popup -->
 
 <div id="campaignPopup" class="popup">
 
@@ -477,6 +525,32 @@ slideIndex++;
 if(slideIndex>slides.length){slideIndex=1}
 slides[slideIndex-1].style.display="block";
 setTimeout(showSlides,3000);
+}
+
+/* Think Before Vote Slider */
+
+var voteIndex=0;
+showVoteSlides();
+
+function showVoteSlides(){
+
+var i;
+var slides=document.getElementsByClassName("vote-slide");
+
+for(i=0;i<slides.length;i++){
+slides[i].style.display="none";
+}
+
+voteIndex++;
+
+if(voteIndex>slides.length){
+voteIndex=1;
+}
+
+slides[voteIndex-1].style.display="block";
+
+setTimeout(showVoteSlides,4000);
+
 }
 
 /* Popup */
