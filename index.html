@@ -65,6 +65,17 @@ text-decoration:none;
 margin:6px;
 }
 
+.poll-btn{
+background:#006400;
+color:white;
+border:none;
+padding:10px 16px;
+margin:8px;
+border-radius:6px;
+font-size:16px;
+cursor:pointer;
+}
+
 .lang-buttons{text-align:center;margin:10px;}
 
 .lang-buttons button{
@@ -102,8 +113,6 @@ text-align:center;
 padding:15px;
 }
 
-/* Hero banner */
-
 .hero{
 width:100%;
 height:350px;
@@ -118,8 +127,6 @@ font-weight:bold;
 text-shadow:3px 3px 10px black;
 padding:20px;
 }
-
-/* Announcement ticker */
 
 .announcement{
 background:#ffcc00;
@@ -141,39 +148,40 @@ animation:scrollText 18s linear infinite;
 100%{transform:translateX(-100%);}
 }
 
-/* Slider */
-
 .slider{position:relative;max-width:100%;overflow:hidden;}
-
 .slide{display:none;}
-
 .slide img{width:100%;border-radius:10px;}
 
-/* Think Before Vote Slider */
+.vote-slider{position:relative;max-width:100%;}
+.vote-slide{display:none;}
+.vote-slide img{width:100%;border-radius:10px;}
+.vote-caption{font-size:18px;font-weight:bold;margin-top:10px;color:#b30000;}
 
-.vote-slider{
-position:relative;
-max-width:100%;
-overflow:hidden;
+.prev,.next{
+cursor:pointer;
+position:absolute;
+top:45%;
+padding:12px;
+color:white;
+font-size:22px;
+background:rgba(0,0,0,0.6);
+border-radius:50%;
 }
 
-.vote-slide{
-display:none;
+.prev{left:10px;}
+.next{right:10px;}
+
+.dot{
+cursor:pointer;
+height:12px;
+width:12px;
+margin:0 3px;
+background:#bbb;
+border-radius:50%;
+display:inline-block;
 }
 
-.vote-slide img{
-width:100%;
-border-radius:10px;
-}
-
-.vote-caption{
-font-size:18px;
-font-weight:bold;
-margin-top:10px;
-color:#b30000;
-}
-
-/* Video placeholder */
+.active{background:#006400;}
 
 .video-container{
 display:grid;
@@ -191,8 +199,6 @@ border-radius:10px;
 font-weight:bold;
 color:#555;
 }
-
-/* Popup */
 
 .popup{
 position:fixed;
@@ -236,10 +242,9 @@ cursor:pointer;
 }
 
 </style>
-
 </head>
 
-<body onload="loadCounters();setLanguage('en')">
+<body onload="loadCounters();setLanguage('en');loadPoll();">
 
 <div class="lang-buttons">
 <button onclick="setLanguage('en')">English</button>
@@ -385,8 +390,6 @@ width="100%" height="300"></iframe>
 
 </section>
 
-<!-- THINK BEFORE YOUR VOTE SECTION -->
-
 <section>
 
 <h2>Think Before Your Vote</h2>
@@ -395,19 +398,41 @@ width="100%" height="300"></iframe>
 
 <div class="vote-slide">
 <img src="voter1.png">
-<p class="vote-caption">
-₹500 today may destroy 5 years of development.
-</p>
+<p class="vote-caption">₹500 today may destroy 5 years of development.</p>
 </div>
 
 <div class="vote-slide">
 <img src="voter2.png">
-<p class="vote-caption">
-Choose leaders who work for people, not those who buy votes.
-</p>
+<p class="vote-caption">Choose leaders who work for people, not those who buy votes.</p>
 </div>
 
+<a class="prev" onclick="plusSlides(-1)">❮</a>
+<a class="next" onclick="plusSlides(1)">❯</a>
+
 </div>
+
+<br>
+
+<span class="dot" onclick="currentSlide(1)"></span>
+<span class="dot" onclick="currentSlide(2)"></span>
+
+</section>
+
+<!-- LIVE POLL SECTION -->
+
+<section>
+
+<h2>Village Opinion Poll</h2>
+
+<p>Do you support development in Kodariya village?</p>
+
+<button class="poll-btn" onclick="vote('yes')">Yes 👍</button>
+<button class="poll-btn" onclick="vote('no')">No 👎</button>
+
+<p>Yes Votes: <span id="yesVotes">0</span></p>
+<p>No Votes: <span id="noVotes">0</span></p>
+
+<p id="voteMessage"></p>
 
 </section>
 
@@ -466,101 +491,43 @@ Share Campaign
 
 <script>
 
-function toggleMenu(){
-var menu=document.getElementById("menu");
-menu.style.display = menu.style.display==="block" ? "none":"block";
-}
+/* LIVE POLL */
 
-function setLanguage(lang){
-var elements=document.getElementsByClassName("lang");
-for(var i=0;i<elements.length;i++){elements[i].style.display="none";}
-var selected=document.getElementsByClassName(lang);
-for(var i=0;i<selected.length;i++){selected[i].style.display="block";}
-}
+function loadPoll(){
 
-function sendVolunteer(){
-var name=document.getElementById("vname").value;
-var phone=document.getElementById("vphone").value;
-var village=document.getElementById("vvillage").value;
+var yes=localStorage.getItem("yesVotes")||0;
+var no=localStorage.getItem("noVotes")||0;
 
-var msg="Volunteer Registration:%0AName: "+name+"%0APhone: "+phone+"%0AVillage: "+village;
-
-window.open("https://wa.me/916367532227?text="+msg);
-}
-
-function sendComplaint(){
-var name=document.getElementById("cname").value;
-var issue=document.getElementById("cissue").value;
-
-var msg="Village Complaint:%0AName: "+name+"%0AIssue: "+issue;
-
-window.open("https://wa.me/916367532227?text="+msg);
-}
-
-function increaseSupport(){
-var count=document.getElementById("supportCount");
-var num=parseInt(count.innerText)+1;
-count.innerText=num;
-localStorage.setItem("supportCount",num);
-}
-
-function loadCounters(){
-var savedSupport=localStorage.getItem("supportCount");
-if(savedSupport){document.getElementById("supportCount").innerText=savedSupport;}
-
-var visit=localStorage.getItem("visitCount");
-visit=visit?parseInt(visit)+1:1;
-document.getElementById("visitCount").innerText=visit;
-localStorage.setItem("visitCount",visit);
-}
-
-var slideIndex=0;
-showSlides();
-
-function showSlides(){
-var i;
-var slides=document.getElementsByClassName("slide");
-for(i=0;i<slides.length;i++){slides[i].style.display="none";}
-slideIndex++;
-if(slideIndex>slides.length){slideIndex=1}
-slides[slideIndex-1].style.display="block";
-setTimeout(showSlides,3000);
-}
-
-/* Think Before Vote Slider */
-
-var voteIndex=0;
-showVoteSlides();
-
-function showVoteSlides(){
-
-var i;
-var slides=document.getElementsByClassName("vote-slide");
-
-for(i=0;i<slides.length;i++){
-slides[i].style.display="none";
-}
-
-voteIndex++;
-
-if(voteIndex>slides.length){
-voteIndex=1;
-}
-
-slides[voteIndex-1].style.display="block";
-
-setTimeout(showVoteSlides,4000);
+document.getElementById("yesVotes").innerText=yes;
+document.getElementById("noVotes").innerText=no;
 
 }
 
-/* Popup */
+function vote(type){
 
-setTimeout(function(){
-document.getElementById("campaignPopup").style.display="flex";
-},3000);
+var votes=localStorage.getItem("userVotes")||0;
 
-function closePopup(){
-document.getElementById("campaignPopup").style.display="none";
+if(votes>=4){
+document.getElementById("voteMessage").innerText="Voting limit reached.";
+return;
+}
+
+votes++;
+
+localStorage.setItem("userVotes",votes);
+
+if(type=="yes"){
+var yes=parseInt(localStorage.getItem("yesVotes")||0)+1;
+localStorage.setItem("yesVotes",yes);
+}
+
+if(type=="no"){
+var no=parseInt(localStorage.getItem("noVotes")||0)+1;
+localStorage.setItem("noVotes",no);
+}
+
+loadPoll();
+
 }
 
 </script>
